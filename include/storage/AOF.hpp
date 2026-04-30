@@ -7,10 +7,10 @@ using namespace std;
 
 class AOF {
 public:
-    AOF(const string& filename); // Must have const string&
+    AOF(const string& filename);
     ~AOF();
 
-    void write(const string& cmd); // Must have const string&
+    void write(const string& cmd);
     void load(class Storage& db);
 
 private:

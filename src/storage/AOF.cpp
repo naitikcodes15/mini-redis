@@ -5,7 +5,6 @@
 
 using namespace std;
 
-// The signature here MUST match the header exactly
 AOF::AOF(const string& filename) : filename(filename) {
     file.open(filename, ios::app);
 }
@@ -18,7 +17,7 @@ void AOF::write(const string& cmd) {
     lock_guard<mutex> lock(file_mutex);
     if (file.is_open()) {
         file << cmd << endl;
-        file.flush(); // Ensure it hits the disk immediately
+        file.flush();
     }
 }
 
@@ -33,12 +32,11 @@ void AOF::load(Storage& db) {
         string cmd, key, val;
         ss >> cmd >> key;
         
-        // Make command uppercase
         transform(cmd.begin(), cmd.end(), cmd.begin(), ::toupper);
         
         if (cmd == "SET") {
             ss >> val;
-            db.set(key, val, false); // Load without re-writing to file
+            db.set(key, val, false);
         } else if (cmd == "DEL") {
             db.del(key);
         }

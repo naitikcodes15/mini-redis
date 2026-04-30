@@ -5,7 +5,6 @@
 
 class Server {
 public: 
-    // Added thread_count parameter with a default value of 4
     Server(int port, Storage& db, size_t thread_count = 4);
     ~Server();
     void start();
@@ -14,7 +13,7 @@ private:
     int server_fd;
     int port;
     Storage& db;
-    ThreadPool pool; // The ThreadPool instance
+    ThreadPool pool;
     
     void handleClient(int client_socket);
 };

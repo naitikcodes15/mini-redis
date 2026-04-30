@@ -2,7 +2,7 @@
 
 A high-performance, multi-threaded, custom key-value store built from scratch in C++. This project is a lightweight, simplified clone of Redis, designed to demonstrate core systems engineering concepts including network programming, concurrency, custom protocol parsing, and data persistence.
 
-## 🚀 Features & Architecture
+## Features & Architecture
 
 - **Multi-threaded TCP Server**: Implements a robust socket listener handling concurrent client connections using a custom **Thread Pool** to prevent thread exhaustion and blocking.
 - **Thread-Safe Storage Engine**: Utilizes `std::unordered_map` protected by **Reader-Writer Locks** (`std::shared_mutex`) to allow high-throughput concurrent reads and safe exclusive writes.
@@ -10,7 +10,7 @@ A high-performance, multi-threaded, custom key-value store built from scratch in
 - **LRU Cache Eviction**: Intelligent memory management incorporating a **Doubly Linked List** and Hash Map to track and evict the Least Recently Used items when the memory capacity is reached.
 - **Disk Persistence (AOF)**: Ensures data reliability by logging every write operation to an **Append-Only File (AOF)**. Automatically recovers and rebuilds state upon server restart.
 
-## 🛠 Tech Stack
+## Tech Stack
 
 - **Language**: C++ (Modern C++17)
 - **Build System**: CMake
@@ -18,7 +18,7 @@ A high-performance, multi-threaded, custom key-value store built from scratch in
 - **Concurrency**: `std::thread`, `std::mutex`, `std::shared_mutex`, `std::condition_variable`
 - **Data Structures**: `std::unordered_map`, `std::list` (Doubly Linked List)
 
-## 🧠 Engineering Skills Demonstrated
+## Engineering Skills Demonstrated
 
 - **Low-Level System Design**: Building a client-server architecture from the ground up without relying on heavy web frameworks.
 - **Concurrency & Synchronization**: Managing race conditions, preventing deadlocks, and optimizing throughput with Reader-Writer locks and Thread Pools.
@@ -26,7 +26,7 @@ A high-performance, multi-threaded, custom key-value store built from scratch in
 - **Network Programming**: Handling raw socket I/O, byte streams, and custom protocol serialization/deserialization.
 - **Durability & Fault Tolerance**: Implementing logging and recovery mechanisms (AOF) to ensure system reliability across reboots.
 
-## ⚙️ Setup & Installation
+## Setup & Installation
 
 ### Prerequisites
 - A C++17 compatible compiler (e.g., GCC, Clang)
@@ -71,7 +71,7 @@ nc localhost 6379
 ```
 *Try commands like: `PING`, `SET key value`, `GET key`.*
 
-## 📚 Technical Concepts Reference
+## Technical Concepts Reference
 
 For recruiters and developers reviewing this repository, the following core computer science and engineering concepts are heavily utilized:
 

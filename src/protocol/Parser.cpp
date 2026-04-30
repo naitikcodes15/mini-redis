@@ -13,7 +13,6 @@ Command Parser::parse(const string& raw_input){
         tokens.push_back(token);
     }
     if (tokens.empty()) return {CommandType::UNKNOWN, {}};
-    // Normalize command to uppercase (e.g., "set" -> "SET")
     string cmd_name = tokens[0];
     transform(cmd_name.begin(), cmd_name.end(), cmd_name.begin(), ::toupper);
 
@@ -24,7 +23,6 @@ Command Parser::parse(const string& raw_input){
     else if (cmd_name == "PING") cmd.type = CommandType::PING;
     else cmd.type = CommandType::UNKNOWN;
 
-    // Everything after the command name is an argument
     for (size_t i = 1; i < tokens.size(); ++i) {
         cmd.args.push_back(tokens[i]);
     }

@@ -9,7 +9,6 @@
 
 using namespace std;
 
-// Initialize the pool in the constructor's initializer list
 Server::Server(int port, Storage& storage, size_t thread_count) 
     : port(port), db(storage), server_fd(-1), pool(thread_count) {}
 
@@ -53,8 +52,6 @@ void Server::start() {
         int client_socket = accept(server_fd, (struct sockaddr*)&client_address, &client_len);
         
         if (client_socket >= 0) {
-            // NEW: Instead of handleClient(client_socket), we wrap it in a lambda 
-            // and push it into the thread pool's task queue.
             pool.enqueue([this, client_socket]() {
                 this->handleClient(client_socket);
             });
